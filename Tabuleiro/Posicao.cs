@@ -1,6 +1,6 @@
 using System;
 
-namespace Tabuleiro{
+namespace Xadrez.Tabuleiro{
 
     public class Posicao{
             
@@ -9,14 +9,14 @@ namespace Tabuleiro{
 
         public Posicao(int linha, int coluna)
         {
-            Linha = linha;
-            Coluna = coluna; 
+            this.Linha = linha;
+            this.Coluna = coluna; 
         }
 
         public override string ToString(){
-            return linha
+            return this.Linha
             + ", "
-            + coluna;
+            + this.Coluna;
         }
 
     }
