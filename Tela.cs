@@ -1,5 +1,6 @@
 using System;
 using Xadrez.Tabuleiro;
+using Xadrez.xadrez;
 
 namespace Xadrez
 {
@@ -15,11 +16,12 @@ namespace Xadrez
                 System.Console.Write(8 - i + " ");
                 for(int j = 0; j < tab.Colunas; j++){
                     if(tab.peca(i,j) == null){
-                        Console.Write("-");
+                        Console.Write(" - ");
                     }
                     else {
+                        System.Console.Write(" ");
                         System.Console.Write(tab.peca(i,j));
-                        System.Console.WriteLine(" ");
+                        System.Console.Write(" ");
                     }
                     
 
@@ -27,8 +29,17 @@ namespace Xadrez
                 System.Console.WriteLine();
             }
 
-            Console.WriteLine("  a b c d e f g h");
+            Console.WriteLine("   a  b  c  d  e  f  g  h");
             
+        }
+
+        public static PosicaoXadrez lerPosicaoXadrez(){
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+
+            return new PosicaoXadrez(coluna,linha);
+
         }
 
         public static void imprimirPeca(Peca peca){

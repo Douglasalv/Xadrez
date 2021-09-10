@@ -54,7 +54,7 @@ namespace Xadrez.Tabuleiro
 
             Peca aux = peca(pos);
             aux.Posicao = null;
-            pecas[pos.linha, pos.coluna] = null;
+            pecas[pos.Linha, pos.Coluna] = null;
             return aux;
         }
 
