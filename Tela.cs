@@ -16,8 +16,22 @@ namespace Xadrez
             imprimirPecasCapturadas(partida);
             Tela.imprimirTabuleiro(partida.tab);
             System.Console.WriteLine();
-            System.Console.WriteLine("Turno: " + partida.turno);
-            System.Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if (!partida.Terminada)
+            {
+                System.Console.WriteLine("Turno: " + partida.turno);
+                System.Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    System.Console.WriteLine("XEQUE!");
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
+            }
+
         }
 
         public static void imprimirPecasCapturadas(PartidaDeXadrez partida){

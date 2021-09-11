@@ -37,7 +37,6 @@ namespace Xadrez
                         Console.ReadLine();
                     }
                 }
-                
             }
             catch(TabuleiroException e)
             {
