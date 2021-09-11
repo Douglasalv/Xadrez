@@ -2,37 +2,40 @@ namespace Xadrez.Tabuleiro
 {
     public abstract class Peca
     {
-        public Posicao Posicao { get; set; }
-        public Cor Cor { get; protected set; }
+        public Posicao posicao { get; set; }
+        public Cor cor { get; protected set; }
         public int qteMovimentos { get; protected set; }
-        public Tabuleiro Tabuleiro { get; protected set; }
+        public Tabuleiro tab { get; protected set; }
 
         public Peca(Tabuleiro tabuleiro, Cor cor)
         {
-            this.Posicao = null;
-            this.Tabuleiro = tabuleiro;
-            this.Cor = cor;
+            this.posicao = null;
+            this.tab = tabuleiro;
+            this.cor = cor;
             this.qteMovimentos = 0;
         }
 
         public abstract bool[,] movimentosPossiveis();
 
-        public void incrementarQteMovimentos(){
+        public void incrementarQteMovimentos()
+        {
             qteMovimentos++;
         }
 
-        public void decrementarQteMovimentos(){
+        public void decrementarQteMovimentos()
+        {
             qteMovimentos--;
         }
 
 
-        public bool existeMovimentosPossiveis(){
+        public bool existeMovimentosPossiveis()
+        {
             bool[,] mat = movimentosPossiveis();
-            for (int i = 0; i < Tabuleiro.Linhas; i++)
+            for (int i = 0; i < tab.linhas; i++)
             {
-                for (int j = 0; j < Tabuleiro.Colunas; j++)
+                for (int j = 0; j < tab.colunas; j++)
                 {
-                    if (mat[i,j])
+                    if (mat[i, j])
                     {
                         return true;
                     }
@@ -43,13 +46,15 @@ namespace Xadrez.Tabuleiro
         }
 
 
-        public bool podeMoverPara(Posicao pos){
-            return movimentosPossiveis()[pos.Linha, pos.Coluna];
+        public bool movimentoPossivel(Posicao pos)
+        {
+            return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
-        private bool podeMover(Posicao pos){
-            Peca p = Tabuleiro.peca(pos);
-            return p == null || p.Cor != this.Cor;
+        private bool podeMover(Posicao pos)
+        {
+            Peca p = tab.peca(pos);
+            return p == null || p.cor != this.cor;
         }
 
     }

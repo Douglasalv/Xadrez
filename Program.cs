@@ -8,11 +8,14 @@ namespace Xadrez
     {
         static void Main(string[] args)
         {
-            try{
+            try
+            {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                while (!partida.Terminada){
-                    try{
+                while (!partida.terminada)
+                {
+                    try
+                    {
                         Console.Clear();
                         Tela.imprimirPartida(partida);
 
@@ -28,17 +31,18 @@ namespace Xadrez
 
                         System.Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.validarPosicaoDeDestino(origem,destino);
+                        partida.validarPosicaoDeDestino(origem, destino);
 
                         partida.realizaJogada(origem, destino);
                     }
-                    catch(TabuleiroException e){
+                    catch (TabuleiroException e)
+                    {
                         System.Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
                 }
             }
-            catch(TabuleiroException e)
+            catch (TabuleiroException e)
             {
                 System.Console.WriteLine(e.Message);
             }
